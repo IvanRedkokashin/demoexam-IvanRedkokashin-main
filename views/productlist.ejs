@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/index.css">
+    <title>Товар-Лист</title>
+</head>
+<body>
+    <%- include('partials/headerProductlist.ejs'); -%>
+    <div class="content-main-header-botton-form"></div>
+    <div class="container-body-text-head">Товары:</div>
+    <div>
+        <div class="container-card-prod">
+            <h2 class="content-main-text">Самокаты:</h2>
+            <% scooters.forEach(scooters => { %>
+                <div class="content-container-card-prod">
+                    <form action="/dellitemsscooter" method="post">
+                        <input type="hidden" name="formdellScootersId" value="<%= scooters.id %>">
+                        <h3>Имя: <%= scooters.name %></h3>
+                        <p class="card-prod-text">Количество: <%= scooters.quantity %></p>
+                        <p class="card-prod-text">Скорость: <%= scooters.speed %></p>
+                        <p class="card-prod-text">Вес: <%= scooters.weight %></p>
+                        <p class="card-prod-text">Запас хода: <%= scooters.powerreserve %></p>
+                        <p class="card-prod-text">Фото: <%= scooters.photo %></p>
+                        <button type="submit" class="edit-buttom">Удалить</button>
+                    </form>
+                </div> 
+            <% }); %>
+        </div>
+        <div class="container-card-prod">
+            <h2 class="content-main-text">Экипировка:</h2>
+            <% equipements.forEach(equipements => { %>
+                <div class="content-container-card-prod">
+                    <form action="/dellitemsequiments" method="post">
+                        <input type="hidden" name="formdellEquipementsId" value="<%= equipements.id %>">
+                        <h3>Имя: <%= equipements.name %></h3>
+                        <p class="card-prod-text">Количество: <%= equipements.quantity %></p>
+                        <p class="card-prod-text">Фото: <%= equipements.photo %></p>
+                        <button type="submit" class="edit-buttom">Удалить</button>
+                    </form>
+                </div> 
+            <% }); %>
+        </div>
+    </div>
+    <div class="content-main-header-up"></div>
+    <%- include('partials/footerGuest.ejs'); -%>
+</body>
+</html>

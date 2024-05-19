@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/index.css">
+    <link rel="stylesheet" href="../public/adaptive.css">
+    <title>Войти</title>
+</head>
+<body>
+    <%- include('partials/headerForm.ejs'); -%>
+    <div class="content-main-header-botton-form"></div>
+    <div class="container-card-form">
+        <div class="container-body-text-main">Войти</div>
+        <div class="hello">Добро пожаловать👋</div>
+        <div class="container-spam">
+            <div class="hello-addit-h">Для входа введите ваши данные</div>
+            <div class="hello-addit-b"><span class="color-yelow">Которые использовали при регистрации</span></div>
+        </div>
+        <div class="container-spam">
+            <div class="hello-addit-h">Для входа под правами администратора</div>
+            <div class="hello-addit-b"><span class="color-yelow">login:admin@root.com password:admin</span></div>
+        </div>
+        <form action="/login" method="post" class="form">
+            <div class="input-auth">
+                <div class="addit">Почта:</div>
+                <input type="email" placeholder="почта@mail" id="email" name="email">
+                <div class="addit">Пароль:</div>
+                <input type="password" placeholder="Ваш пароль" id="password" name="password">
+                <input type="submit" value="Войти" class="butn-form">
+            </div>
+        </form>
+    </div>
+    <div class="content-main-header-up"></div>
+    <%- include('partials/footerGuest.ejs'); -%>
+</body>
+</html>

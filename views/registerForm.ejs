@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/index.css">
+    <link rel="stylesheet" href="../public/adaptive.css">
+    <title>Регистрация</title>
+</head>
+<body>
+    <%- include('partials/headerForm.ejs'); -%>
+    <div class="content-main-header-botton-form"></div>
+    <div class="container-card-form">
+        <div class="container-body-text-main">Регистрация</div>
+        <form action="#" method="post" class="form">
+            <div class="input-auth">
+                <input type="hidden" value="false" id="role" name="role">
+                <div class="addit">Имя:</div>
+                <input type="text" placeholder="Ваше имя" id="username" name="username" pattern="[A-Za-zА-Яа-яЁё]">
+                <div class="addit">Фамилия:</div>
+                <input type="text" placeholder="Ваша Фамилия" id="usersurname" name="usersurname" pattern="[A-Za-zА-Яа-яЁё]">
+                <div class="addit">Дата рождения:</div>
+                <input type="date" id="age" name="age" required>
+                <div class="addit">Почта:</div>
+                <input type="email" placeholder="почта@mail" id="email" name="email">
+                <div class="addit">Пароль:</div>
+                <input type="password" placeholder="Ваш пароль" id="password" name="password" required minlength="6">
+                <input type="password" placeholder="Повторите ваш пароль" id="repitpassword" name="repitpassword" required minlength="6">
+                <div class="container-cheakbox">
+                        <input type="checkbox" name="policeconfig">
+                        <label for="html"><a href="#" id="additional-cheak" class="checkbox-additional">Пользовательское соглашение</a></label>
+                </div>
+                <input type="submit" value="Зарегистрироваться" class="butn-form">
+            </div>
+        </form>
+    </div>
+    <div class="content-main-header-up"></div>
+    <%- include('partials/footerGuest.ejs'); -%>
+    <script>
+        document.getElementById('additional-cheak').addEventListener('click', function(event) {
+            event.preventDefault();
+            alert('Пользовательское соглашение на обработку данных');
+        });
+    </script>
+</body>
+</html>

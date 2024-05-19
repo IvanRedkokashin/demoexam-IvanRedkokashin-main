@@ -1,0 +1,103 @@
+@media(max-width: 1368px){
+    .content-main-header{
+        flex-direction: column;
+    }
+    .main-header-left{
+        width: 100%;
+    }
+    .main-header-left{
+        width: 100%;
+    }
+    .container-body-text-head{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .container-body-text-main{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .container-body{
+        display: flex;
+        justify-content: center;
+    }
+    .container-card{
+        max-width: 250px;
+        justify-content: center;
+    }
+    .container-card-medium{
+        max-width: 400px;
+        justify-content: center;
+        flex-direction: column;  
+    }
+    .scooter-img{
+        width: 200px;
+    }
+    .container-card-photo{
+        width: auto;
+        justify-content: center;
+        align-items: center;
+        margin: 40px;
+        padding: 10px;
+    }
+    .photo-about{
+        width: 500px;
+    }
+    .hello-admin{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container-body-text-body{
+        justify-content: center;
+        align-items: center;
+    }
+    .container-card-form-rezerved-block{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .edit-buttom{
+        width: 200px;
+    }
+}
+@media(max-width: 768px) {
+    .container-header{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 20px; 
+    }
+    .container-link{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .container-header-button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 70px;
+    }
+    .logotip{
+        margin-left: 0px;
+        align-items: center;
+        justify-content: center;
+    }
+    .container-body{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .container-card{
+        align-items: center;
+        justify-content: center;
+        max-width: 400px;
+    }
+    .img-header-container{
+        width: 600px;
+    }
+}

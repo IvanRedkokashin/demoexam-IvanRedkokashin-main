@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/index.css">
+    <link rel="stylesheet" href="../public/adaptive.css">
+    <title>Панель управления</title>
+</head>
+<body>
+    <%- include('partials/headerGuest.ejs'); -%>
+    <div class="content-main-header-botton-form"></div>
+    <div class="container-body-text-head">Панель управления</div>
+    <div class="container-body">
+        <div class="container-card-form-profile">
+            <h1>Добавление контента</h1>
+            <div class="buttoms-form-profile">
+                <div>
+                    <form action="/addscoters" method="post" class="form-edit">
+                        <label for="new_email">Новый самокат</label>
+                        <div class="addit-form-control">Имя самоката:</div>
+                        <input type="text" id="name" name="name" class="editinput" placeholder="Имя самоката">
+                        <div class="addit-form-control">Путь к фото:</div>
+                        <input type="text" id="photourl" name="photo" class="editinput" placeholder="../public/images/ScooterKids2.png">
+                        <div class="addit-form-control">Максимальная скорость:</div>
+                        <input type="text" id="speed" name="speed" class="editinput" placeholder="20км/ч">
+                        <div class="addit-form-control">Запас хода:</div>
+                        <input type="text" id="powerreserve" name="powerreserve" class="editinput" placeholder="20км">
+                        <div class="addit-form-control">Вес:</div>
+                        <input type="text" id="weight" name="weight" class="editinput" placeholder="13кг">
+                        <div class="addit-form-control">Количество:</div>
+                        <input type="text" id="quantity" name="quantity" class="editinput" placeholder="5">
+                        
+                        <button type="submit" class="edit-buttom">Добавить</button>
+                    </form>
+                </div>
+                <div>
+                    <form action="/addequipement" method="post" class="form-edit">
+                        <label for="new_email">Новая экипировка:</label>
+                        <div class="addit-form-control">Имя экипировки:</div>
+                        <input type="text" id="name" name="name" class="editinput" placeholder="Имя экипировки">
+                        <div class="addit-form-control">Путь к фото:</div>
+                        <input type="text" id="photourl" name="photo" class="editinput" placeholder="../public/images/armor-Photoroom.png">
+                        <div class="addit-form-control">Количество:</div>
+                        <input type="text" id="quantity" name="quantity" class="editinput" placeholder="5">
+                        <button type="submit" class="edit-buttom">Добавить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-body-text-head">Товары:</div>
+    <div class="container-card">
+        <h2>Список товаров и их изменения</h2>
+        <div><a class="logoutbutton" href="/productlist">Посмотреть</a></div>
+    </div>
+    <div class="container-body-text-head">Заявки на бронь</div>
+    <div class="container-card">
+        <h2>Заявки</h2>
+        <p class="card-prod-text">После завершения брони <span class="color-red">нужно</span> не забыть удалить заявку</p>
+        <% bookings.forEach(bookings => { %>
+            <div class="content-container-card-prod">
+                <form action="/dellrezerved" method="post">
+                    <input type="hidden" name="formId" value="<%= bookings.id %>">
+                    <input type="hidden" name="scootersName" value="<%= bookings.scooterName %>">
+                    <input type="hidden" name="scooterValue" value="<%= bookings.quantity %>">
+                    <p class="card-prod-text">Имя брони: <%= bookings.userName %></p>
+                    <p class="card-prod-text">Дата бронирования: <%= bookings.bookingDate %></p>
+                    <p class="card-prod-text">Время бронирования: <%= bookings.bookingTime %></p>
+                    <p class="card-prod-text">Самокаты: <%= bookings.scooterName %></p>
+                    <p class="card-prod-text">Количество самокатов: <%= bookings.quantity %></p>
+                    <p class="card-prod-text">Количество людей: <%= bookings.numberOfPeople %></p>
+                    <p class="card-prod-text">Почта обратной связи: <%= bookings.userid %></p>
+                    <button type="submit" class="edit-buttom">Удалить заявку</button>
+                </form>
+            </div>
+                <% }) %>
+    </div>
+    <div class="content-main-header-up"></div>
+    <%- include('partials/footerGuest.ejs'); -%>
+    <script>
+        setInterval( () => {
+            location.reload();
+        },15000);
+    </script>
+</body>
+</html>

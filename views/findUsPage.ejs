@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/index.css">
+    <link rel="stylesheet" href="../public/adaptive.css">
+    <title>Scooter rental</title>
+</head>
+<body>
+    <%- include('partials/headerGuest.ejs'); -%>
+    <div class="content-main-header-botton-form"></div>
+    <div class="container-content">
+        <div class="container-body-text-head">Мы на карте:</div>
+        <div class="container-body">
+            <div class="container-maps">
+                <iframe class="maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1108.5959814868486!2d28.74706026219141!3d60.71305498252976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4697324c9a172009%3A0x10b300a095c5be5b!2z0J3QsNCx0LXRgNC10LbQvdCw0Y8g0JfQsNC70LjQstCwINCh0LDQu9Cw0LrQutCwLdCb0LDRhdGC0Lg!5e0!3m2!1sru!2sru!4v1714385474695!5m2!1sru!2sru" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="container-card-text-maps">
+                <h2 class="content-main-text"><span class="color-red">Вы нас можете найти на набережной</span> в видимости от заправки</h2>
+            </div>
+        </div>
+        <div class="container-body-text-head">Приезжайте в выборг за незабываемыми прогулками с нашими самокатами:</div>
+        <div class="container-body">
+            <div class="container-card-photo">
+                <img src="../public/images/v.jpg" class="photo-about" alt="vyborg">
+            </div>
+            <div class="container-card-photo">
+                <img src="../public/images/vyborg1img.jpg" class="photo-about" alt="vyborg">
+            </div>
+        </div>
+    </div>
+    <div class="content-main-header-up"></div>
+    <%- include('partials/footerGuest.ejs'); -%>
+</body>
+</html>

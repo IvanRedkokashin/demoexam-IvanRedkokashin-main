@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/index.css">
+    <link rel="stylesheet" href="../public/adaptive.css">
+    <title>Профиль</title>
+</head>
+<body>
+    <%- include('partials/headerGuest.ejs'); -%>
+    <div class="content-main-header-botton-form"></div>
+    <div class="container-body-text-head">Ваш профиль</div>
+    <div class="container-body">
+        <div class="container-card-form-profile">
+            <h1>Учетная запись</h1>
+            <h2>Ваше имя: <%= userName %></h2>
+            <h2>Ваша почта: <%= userEmail %></h2>
+            <div class="buttoms-form-profile">
+                <div>
+                    <form action="/editEmail" method="post" class="form-edit">
+                        <label for="new_email">Новая почта:</label>
+                        <input type="email" id="email" name="email" class="editinput" placeholder="new email@mail.com">
+                        <button type="submit" class="edit-buttom">Изменить почту</button>
+                    </form>
+                </div>
+                <div>
+                    <form action="/editName" method="post" class="form-edit">
+                        <label for="new_email">Новое имя:</label>
+                        <input type="text" id="name" name="name" class="editinput" placeholder="new name">
+                        <button type="submit" class="edit-buttom">Изменить имя</button>
+                    </form>
+                </div>
+                <div><a class="logoutbutton" href="/logout">Выйти из учетной записи</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="container-body-text-head">Ваши заявки</div>
+    <div class="container-card">
+        <h2>Заявки</h2>
+        <% bookings.forEach(bookings => { %>
+            <div class="content-container-card-prod">
+            <p class="card-prod-text">Дата бронирования: <%= bookings.bookingDate %></p>
+            <p class="card-prod-text">Время бронирования: <%= bookings.bookingTime %></p>
+            <p class="card-prod-text">Самокаты: <%= bookings.scooterName %></p>
+            <p class="card-prod-text">Количество людей: <%= bookings.numberOfPeople %></p>
+            <p class="card-prod-text">Почта обратной связи: <%= userEmail %></p>
+        </div>
+            <% }) %>
+    </div>
+    <div class="content-main-header-up"></div>
+    <%- include('partials/footerGuest.ejs'); -%>
+</body>
+</html>

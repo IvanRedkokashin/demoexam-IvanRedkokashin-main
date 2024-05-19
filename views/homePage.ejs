@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../public/index.css" />
+    <link rel="stylesheet" href="../public/adaptive.css" />
+    <title>СамокатВпрокат</title>
+  </head>
+  <body>
+    <%- include('partials/headerGuest.ejs'); -%>
+    <div class="content-main-header">
+      <div class="main-header-left">
+        <h2 class="content-main-text-header">О нас</h2>
+        <ul>
+          <li class="text-li-header">
+            <span class="color-yelow">СамокатВпрокат</span> аренда самоката в
+            <span class="color-red">Выборге</span>
+          </li>
+          <li class="text-li-header">
+            На выбор есть самокаты
+            <span class="color-red">разной</span> мощности
+          </li>
+          <li class="text-li-header">
+            Для детей мы предоставляем
+            <span class="color-yelow">защитную экипировку</span>
+          </li>
+          <li class="text-li-header">
+            Бронь самоката в <span class="color-red">удобное для вас</span>
+            <span class="color-yelow">время</span>
+          </li>
+          <li class="text-li-header">
+            Предоставляем резерв на несколько человек
+          </li>
+        </ul>
+      </div>
+      <div class="main-header-right">
+        <img
+          src="../public/images/scooter.jpeg"
+          class="img-header-container"
+          alt="картинка самоката"
+        />
+      </div>
+    </div>
+    <div class="content-main-header-botton"></div>
+    <div class="container-content">
+      <% if (userRole == 'true') { %>
+      <div class="hello-admin">
+        <h2>Добро пожаловать администратор</h2>
+      </div>
+      <div class="container-body">
+        <div class="container-card">
+          <h2 class="content-main-text">
+            Для управления контентом
+            <span class="color-red"
+              ><a href="/admincontrol" class="color-red"
+                >перейдите в панель управления</a
+              ></span
+            >
+          </h2>
+        </div>
+      </div>
+      <% } %> <% if (userName && userEmail) { %>
+      <div class="container-body-text-head">
+        Добро пожаловать, <%= userName %> 👋
+      </div>
+      <div class="container-body-text-body">
+        Ваша почта для обратной связи, <%= userEmail %>!
+      </div>
+      <div class="container-body">
+        <div class="container-card">
+          <h2 class="content-main-text">
+            Мы рады вас видеть вновь, чтобы
+            <span class="color-red">забронировать</span> обратитесь к форме
+            заказов
+          </h2>
+        </div>
+        <div class="container-card">
+          <h2 class="content-main-text">
+            Если хотите ознакомиться с вашими данными обратной связи, обратитесь
+            в
+            <span class="color-red"
+              ><a href="/profile" class="color-red">профиль</a></span
+            >
+          </h2>
+        </div>
+        <div class="container-card">
+          <h2 class="content-main-text">
+            Если данные не актуальны, их можно изменить в меню
+            <span class="color-red"
+              ><a href="/profile" class="color-red">профиля</a></span
+            >
+          </h2>
+        </div>
+      </div>
+      <div class="container-body-text-head">Форма бронирования 🔔:</div>
+      <div class="container-card-form-rezerved-block">
+        <div class="container-card-form-rezerved">
+          <form action="/createrezerv" method="post" class="form-reserved">
+            <div class="input-auth">
+              <input type="hidden" name="username" value="<%= userName %> " />
+              <div class="addit">Количество персон:</div>
+              <select name="personvalue" id="personvalue" class="form-select">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+              </select>
+              <div class="addit">Самокаты:</div>
+              <% scooters.forEach(scooters => { %>
+              <div class="card-value-scooter">
+                <div class="form-checkbox-scooter">
+                  <p><%= scooters.name %></p>
+                  <input
+                    type="hidden"
+                    value="<%= scooters.name %>"
+                    name="scootersName"
+                  />
+                  <div class="optin">
+                    <select
+                      name="scooterValue"
+                      id="scooterValue"
+                      class="option-scooter"
+                    >
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                    </select>
+                  </div>
+                </div>
+                <p>Есть в наличии <%= scooters.quantity%></p>
+              </div>
+              <% }); %>
+              <div class="addit">Дата бронирования:</div>
+              <input type="date" id="daterezerv" name="daterezerv" />
+              <div class="addit">Время:</div>
+              <input type="time" id="time" name="time" />
+              <button type="submit" class="butn-form-request">
+                Забронировать
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <% } else { %>
+      <div class="container-body-text-head">Добро пожаловать, Гость 👋</div>
+      <div class="container-body">
+        <div class="container-card">
+          <h2 class="content-main-text">
+            Для того что бы забронировать самокат вам нужно
+            <span class="color-red"
+              ><a href="/login" class="color-red">войти</a></span
+            >
+            или
+            <span class="color-red"
+              ><a href="/register" class="color-red"
+                >зарегистрироваться</a
+              ></span
+            >
+          </h2>
+        </div>
+        <div class="container-card">
+          <h2 class="content-main-text">
+            После создание учетной записи на нашем сайте
+            <span class="color-red">вы сможете</span> создать свой уникальный
+            <span class="color-red">профиль</span>
+          </h2>
+        </div>
+        <div class="container-card">
+          <h2 class="content-main-text">
+            В профиле вы также получите возможность изменить данные обратной
+            связи
+          </h2>
+        </div>
+      </div>
+      <% } %>
+      <div class="container-body-text-head">Самокаты на выбор:</div>
+      <div class="container-body">
+        <div class="container-card">
+          <h2 class="content-main-text">Xiaomi Mi Electric Scooter 3 Lite</h2>
+          <img
+            src="../public/images/ScooterKids2.png"
+            class="scooter-img"
+            alt="картинка самоката"
+          />
+          <div class="container-card-additional">
+            <h3 class="content-additional-text">Скорость: 20км/ч</h3>
+            <h3 class="content-additional-text">Запас хода: 20км</h3>
+            <h3 class="content-additional-text">Вес: 13кг</h3>
+          </div>
+        </div>
+        <div class="container-card">
+          <h2 class="content-main-text">Xiaomi Mi Electric Scooter 3 Pro</h2>
+          <img
+            src="../public/images/scootemielictric4pro.png"
+            class="scooter-img"
+            alt="картинка самоката"
+          />
+          <div class="container-card-additional">
+            <h3 class="content-additional-text">Скорость: 40км/ч</h3>
+            <h3 class="content-additional-text">Запас хода: 30км</h3>
+            <h3 class="content-additional-text">Вес: 15кг</h3>
+          </div>
+        </div>
+        <div class="container-card">
+          <h2 class="content-main-text">Xiaomi Mi Electric Scooter 3 Lite</h2>
+          <img
+            src="../public/images/ScooterKids2.png"
+            class="scooter-img"
+            alt="картинка самоката"
+          />
+          <div class="container-card-additional">
+            <h3 class="content-additional-text">Скорость: 20км/ч</h3>
+            <h3 class="content-additional-text">Запас хода: 20км</h3>
+            <h3 class="content-additional-text">Вес: 13кг</h3>
+          </div>
+        </div>
+      </div>
+      <div class="container-body-text-main">Защитная экипировка для детей:</div>
+      <div class="container-body">
+        <div class="container-card-medium">
+          <div class="content-main-photo">
+            <img
+              src="../public/images/armor-Photoroom.png"
+              class="scooter-img"
+              alt="картинка экипировки"
+            />
+            <img
+              src="../public/images/armor2-Photoroom.png"
+              class="scooter-img"
+              alt="картинка экипировки"
+            />
+          </div>
+          <div class="container-card-medium-head">
+            <h3 class="content-main-text">
+              Комплект защиты для катания Ilizium Sport
+            </h3>
+          </div>
+        </div>
+        <div class="container-card-medium">
+          <img
+            src="../public/images/rashaction-Photoroom.png"
+            width="300px"
+            alt="картинка экипировки"
+          />
+          <div class="container-card-medium-head">
+            <h3 class="content-main-text">
+              Комплект защиты для катания RushAction
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div class="container-body-text-main">Бронь самоката в любое время:</div>
+      <div class="container-body">
+        <div class="container-card-medium-dual">
+          <div class="content-main-photo-dual">
+            <img
+              src="../public/images/clock.gif"
+              class="clock-gif"
+              alt="Время-gif"
+            />
+          </div>
+          <div class="container-card-medium-head-dual">
+            <h3 class="content-main-text-dual">
+              Порадуйте себя и своих близких поездкой в свой выходной
+            </h3>
+            <h3 class="content-main-text-dual">
+              Поездка по городу подарит вам не забываемые впечатления
+            </h3>
+            <h3 class="content-main-text-dual">
+              Не считая выходных, самокат поможет вам быстро добраться до работы
+            </h3>
+            <h3 class="content-main-text-dual">
+              Самокат - это быстро и экологично
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div class="container-body-text-main">Резерв:</div>
+      <div class="container-body">
+        <div class="container-card-medium-dual">
+          <div class="container-card-medium-head-dual">
+            <h3 class="content-main-text-dual">
+              Забронировать можно на несолько персон
+            </h3>
+            <h3 class="content-main-text-dual">
+              Для детей мы предоставляем экипировку
+            </h3>
+            <h3 class="content-main-text-dual">
+              До поездки по всем вопорсом вас проконсультируют
+            </h3>
+            <h3 class="content-main-text-dual">
+              В случаи выяснения неисправности самоката, стоимость поздки
+              онулируют
+            </h3>
+          </div>
+          <div class="content-main-photo-dual">
+            <img
+              src="../public/images/reserved.gif"
+              class="reserved-gif"
+              alt="Время-gif"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-main-header-up"></div>
+    <%- include('partials/footerGuest.ejs'); -%>
+  </body>
+</html>
